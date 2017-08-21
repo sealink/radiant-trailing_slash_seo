@@ -23,43 +23,10 @@ Gem::Specification.new do |s|
   s.email = 'support@travellink.com.au'
   s.homepage = 'http://github.com/sealink/radiant-trailing_slash_seo-extension'
 
-  ## This gets added to the $LOAD_PATH so that 'lib/NAME.rb' can be required as
-  ## require 'NAME.rb' or'/lib/NAME/file.rb' can be as require 'NAME/file.rb'
-  s.require_paths = %w[lib]
+  s.license       = "MIT"
 
-  ## This sections is only necessary if you have C extensions.
-  # s.require_paths << 'ext'
-  # s.extensions = %w[ext/extconf.rb]
-
-  ## If your gem includes any executables, list them here.
-  # s.executables = ["name"]
-
-  ## Specify any RDoc options here. You'll want to add your README and
-  ## LICENSE files to the extra_rdoc_files list.
-  s.rdoc_options = ["--charset=UTF-8"]
-  s.extra_rdoc_files = %w[README.md]
-
-  ## List your runtime dependencies here. Runtime dependencies are those
-  ## that are needed for an end user to actually USE your code.
-
-  # For shared and nested layouts
-  s.add_dependency('radius')
-
-  ## List your development dependencies here. Development dependencies are
-  ## those that are only needed during development
-  # s.add_development_dependency('DEVDEPNAME', [">= 1.1.0", "< 2.0.0"])
-  s.add_development_dependency('rspec', '>= 2.0')
-
-  ## Leave this section as-is. It will be automatically generated from the
-  ## contents of your Git repository via the gemspec task. DO NOT REMOVE
-  ## THE MANIFEST COMMENTS, they are used as delimiters by the task.
-  # = MANIFEST =
-  s.files = %w[
-
-  ]
-  # = MANIFEST =
-
-  ## Test files will be grabbed from the file list. Make sure the path glob
-  ## matches what you actually use.
-  s.test_files = s.files.select { |path| path =~ /^test\/test_.*\.rb/ }
+  s.files         = `git ls-files`.split($/)
+  s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  s.test_files    = s.files.grep(%r{^(test|spec|features)/})
+  s.require_paths = ["lib"]
 end
